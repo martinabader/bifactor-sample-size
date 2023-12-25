@@ -125,7 +125,6 @@ summaryParam(results, detail = TRUE, improper = FALSE)
 
 Parts of the output are shown below:
 
-``` r
 
 |            | Estimate Average | Estimate SD | Average SE | Power (Not equal 0) | Average Bias | Coverage | Rel Bias | Rel SE Bias |
 |------------|------------------|-------------|------------|---------------------|--------------|----------|----------|-------------|
@@ -149,7 +148,6 @@ Parts of the output are shown below:
 | S3=~y9     | 0.40             | 0.13        | 0.17       | 0.78                | 0.00         | 0.98     | -0.01    | 0.30        |
 
 
-```
 
 The rows refer to the various parameters of the model and the columns provide different summary statistics. 
 The initial two columns (`Estimate Average` and `Estimate SD`) offer a summary of the average and standard deviation of estimated parameters from various simulation solutions. When considering the standard deviation of parameter estimates across numerous replications, it serves as an approximation of the corresponding standard errors in the population, allowing a comparison against empirically calculated standard errors found in the `Average SE` column. 
@@ -163,9 +161,29 @@ The last two columns (`Rel Bias` and `Rel SE Bias`) display the average relative
 In our analysis, the relative bias for all factor loadings proved negligible. However, the estimated standard errors for general factor loadings displayed minor to moderate biases, while those for specific factor loadings exhibited strong biases.
 
 
+### Explained Common Variance (ECV) ###
+
+Finally, we evaluate how accurately the ECV of our model is estimated using the costum `summaryECV function`:
+
+``` r
+summaryECV(results, improper = FALSE)
+```
+
+The following output is obtained:
+
+|              | Population Value | Estimate Average | Estimate SD | Average Bias | Relative Bias |
+|--------------|------------------|------------------|-------------|--------------|---------------|
+| ECV          | 0.69             | 0.67             | 0.05        | -0.02        | -0.03         |
+
+This shows that the estimated ECV is on average 0.02 smaller than the population ECV. This corresponds to a relative bias of −0.03, which is acceptable. 
+
+### Summary
+
+In sum,the findings show that a sample size of 150 issufficient for accurate parameter and ECV estimation. However, the unacceptable convergence rate and moderate to strong relative biases in standard error estimates signal the necessity for a larger sample size.  Thus, a logical next step is to repeat the Monte Carlo study, incrementally increasing the sample size until achieving satisfactory outcomes across all measures.  For our example model, a sample size of 300 would be adequate to obtain a high convergence rate and acceptable relative biases for all parameters and standard errors.
+
 
 ## Next steps
 
-
+Using a Monte Carlo simulation, you can also consider many more model or data characteristics and their impact on sample size requirements. For instance, you could investigate how non-normally distributed data, ordinal indicators, and missing data affect the required sample size. To see, how to include these design factors into your Monte Carlo simulation, check out the paper published in *Structural Equation Modeling: A Multidisciplinary Journal* [https://doi.org/10.1080/10705511.2021.2019587].
 
 
