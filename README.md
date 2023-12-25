@@ -12,7 +12,7 @@ Despite the widespread application of bifactor models, little research has consi
 
 ## Simulation Study
 
-The folder simulation-study contains R scripts for a Monte Carlo simulation study examining various potential determinants of the sample size requirements of bifactor models. The following model characteristics are manipulated:
+The folder [simulation-study](https://github.com/martinabader/bifactor-sample-size/tree/main/simulation-study) contains R scripts for a Monte Carlo simulation study examining various potential determinants of the sample size requirements of bifactor models. The following model characteristics are manipulated:
 * number of specific factors per model 
 * the number of indicators per specific factor
 * the average magnitude of general factor loadings
